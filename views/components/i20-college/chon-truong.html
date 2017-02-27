@@ -1,0 +1,79 @@
+<section class="content-header">
+	<h3 style="margin-top: 0">
+		{{lang.school_select}}
+	</h3>
+</section>
+<!-- Main content -->
+<section class="content">
+	<div class="row">
+		<section class="col-lg-12 connectedSortable">
+			<form class="form-horizontal" ng-submit="saveInfo(6)">
+				<div class="box box-primary">
+					<div class="box-header">
+						<h3 class="box-title">{{lang.fit_school}}</h3>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+						<table id="new-table" class="table table-bordered table-striped" data-page-length="10">
+							<thead>
+								<tr>
+									<th>{{lang.stage}}</th>
+									<th>{{lang.school_kind}}</th>
+									<th>{{lang.school_name}}</th>
+									<th class="text-center">{{lang.selected}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="school in schools">
+									<td>{{school.TieuBang}}</td>
+									<td>{{school.LoaiTruong}}</td>
+									<td>{{school.TenTruong}}</td>
+									<td class="school-action text-center">
+										<label>
+											<input icheck type="radio" name="iCheck" class="flat-red" id="r-btn-{{$index}}" ng-value={{$index}} ng-model="$parent.indexSchool" ng-change="changeFaculty(indexSchool)" />
+										</label>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<div class="box box-primary" ng-if="faculty.length > 0">
+					<div class="box-header">
+						<h3 class="box-title">{{lang.faculty}}</h3>
+					</div>
+					<div class="box-body">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">{{lang.faculty_1}}</label>
+							<div class="col-sm-3">
+								<select ng-model="profile.Truong.Nganh1" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in faculty">{{item}}</option>
+								</select>
+							</div>
+
+							<label class="col-sm-2 control-label">{{lang.faculty_2}}</label>
+							<div class="col-sm-3">
+								<select ng-model="profile.Truong.Nganh2" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in faculty">{{item}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="box-footer">
+						<button type="submit" class="btn btn-primary pull-right" id="btnNext">{{lang.next}}</button>
+					</div>
+				</div>
+				<button type="submit" ng-if="faculty.length <= 0" class="btn btn-primary pull-right" id="btnNext">{{lang.next}}</button>
+			</form>
+		</section>
+	</div>
+</section>
+
+<script>
+	$(document).ready(function() {
+		setTimeout(function () {
+			$(".select2").select2();
+		}, 1000);
+	});
+</script>

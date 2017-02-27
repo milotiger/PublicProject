@@ -1,0 +1,53 @@
+<section class="content-header">
+    <h3 style="margin-top: 0">
+        I20 Tracking
+    </h3>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12 connectedSortable">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">{{lang.procedure}}</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <section style="width: 100% !important;">
+                        <nav>
+                            <ol class="cd-multi-steps text-center">
+                                <li class="visited"><a href="javascript:void(0)"><em>Complete Application</em></a></li>
+                                <li class="visited"><a href="javascript:void(0)"><em>Process</em></a></li>
+                                <li ng-class="adminStep < 1 ? '' : (adminStep == 1 ? 'current' : 'visited')"><em>Update Form</em></li>
+                                <li ng-class="adminStep < 2 ? '' : (adminStep == 2 ? 'current' : 'visited')"><em>In Transit</em></li>
+                                <li ng-class="adminStep < 3 ? '' : (adminStep == 3 ? 'current' : 'visited')"><em>Check I20</em></li>
+                                <li ng-class="adminStep < 4 ? '' : (adminStep == 4 ? 'current' : 'visited')"><em>Delivered</em></li>
+                            </ol>
+                        </nav>
+                    </section>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </section>
+        <section class="col-lg-6 connectedSortable">
+            <div class="box box-primary">
+                <div class="overlay" ng-style="!isWait && {'display':'none'}">
+                    <i class="fa fa-refresh fa-spin"></i>
+                </div>
+                <div class="box-header">
+                    <h3 class="box-title">{{lang.fee}}</h3>
+                </div>
+                <div class="box-body">
+                    <div ng-class="{ 'form-hidden': paid.status == 'PAID' }">{{lang.unpaid}}</div>
+                    <div ng-class="{ 'form-hidden': paid.status != 'PAID' }">{{lang.paid}}</div>
+                </div>
+                <div class="box-footer">
+                    <button type="button" class="btn btn-primary pull-right" ng-class="{ 'form-hidden': paid.status == 'PAID' }" id="btnPayment" ng-click="rePayment()">{{lang.pay_now}}</button>
+                </div>
+            </div>
+        </section>
+        <section class="col-lg-6 connectedSortable">
+
+        </section>
+    </div>
+</section>

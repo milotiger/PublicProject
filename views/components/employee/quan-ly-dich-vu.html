@@ -1,0 +1,28 @@
+<section class="content-header">
+    <h1>{{lang.services_mng}}</h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12 connectedSortable">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="nav-tab-1"><a class="pointer" data-target="#tab1" data-toggle="tab" ng-click="changeTab(1)">{{lang.file_checking}}</a></li>
+                    <li class="nav-tab-2"><a class="pointer" data-target="#tab2" data-toggle="tab" ng-click="changeTab(2)">{{lang.file_processing}}</a></li>
+                    <li class="nav-tab-3"><a class="pointer" data-target="#tab3" data-toggle="tab" ng-click="changeTab(3)">{{lang.i20_submit}}</a></li>
+                    <li class="nav-tab-4"><a class="pointer" data-target="#tab4" data-toggle="tab" ng-click="changeTab(4)">{{lang.i20_checking}}</a></li>
+                    <li class="nav-tab-5"><a class="pointer" data-target="#tab5" data-toggle="tab" ng-click="changeTab(5)">{{lang.i20_return}}</a></li>
+                    <li class="nav-tab-6"><a class="pointer" data-target="#tab6" data-toggle="tab" ng-click="changeTab(6)">{{lang.finish}}</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <div ui-view="tab-content"></div>
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- nav-tabs-custom -->
+        </section>
+    </div>
+</section>

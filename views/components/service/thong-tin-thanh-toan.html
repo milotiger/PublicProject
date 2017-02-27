@@ -1,0 +1,146 @@
+<section class="content-header">
+    <h1>
+        Paypal
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12 connectedSortable">
+            <!-- New -->
+            <div class="box">
+                <form class="form-horizontal" ng-submit="savePaypalInfo()">
+                    <div class="box-header">
+                        <h3 class="box-title">{{lang.account_info}}</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">{{lang.name}}<span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="acc.last_name" placeholder="{{lang.last_name}}" required>
+                            </div>
+
+                            <div class="col-sm-1"></div>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="acc.first_name" placeholder="{{lang.first_name}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">{{lang.company_name}}<span class="text-red">*</span></label>
+
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" ng-model="acc.business_name" placeholder="{{lang.company_name}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">{{lang.address}}<span class="text-red">*</span></label>
+
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" ng-model="acc.address.line1" placeholder="{{lang.number_address}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label"></label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="acc.address.city" placeholder="{{lang.city}}" required>
+                            </div>
+
+                            <div class="col-sm-1"></div>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="acc.address.state" placeholder="{{lang.national}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label"></label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="acc.address.postal_code" placeholder="{{lang.postal_code}}" required>
+                            </div>
+
+                            <div class="col-sm-1"></div>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="acc.address.country_code" placeholder="{{lang.country_code}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">{{lang.phone_number}}<span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="acc.phone.country_code" placeholder="{{lang.phone_code}}" required>
+                            </div>
+
+                            <div class="col-sm-1"></div>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="acc.phone.national_number" placeholder="{{lang.phone_number}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Client ID<span class="text-red">*</span></label>
+
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="key1" ng-model="acc.client_id" placeholder="Client ID" required disabled>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-primary" ng-click="checkAdmin(1)" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-edit"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Client Secret<span class="text-red">*</span></label>
+
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="key2" ng-model="acc.client_secret" placeholder="Client secret key" required disabled>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-primary" ng-click="checkAdmin(2)" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-edit"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right">{{lang.save}}</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /New -->
+        </section>
+    </div>
+
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="form-horizontal" ng-submit="checkAdmin(-1)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{lang.verify}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="password" class="form-control" ng-model="passwordValue" placeholder="{{lang.write_password}}" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">OK</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function() {
+        setTimeout(function() {
+            $(".select2").select2();
+        }, 500);
+    });
+</script>

@@ -1,0 +1,86 @@
+<section class="content-header">
+    <h3 style="margin-top: 0">
+        {{lang.i20_input}}
+        <small>{{lang.signature}}</small>
+    </h3>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12 connectedSortable">
+            <form class="form-horizontal" ng-submit="saveInfo(5)">
+                <div class="box box-primary">
+                    <div class="overlay" ng-style="!isWait && {'display':'none'}">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.account_signature}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="file" class="col-sm-2 control-label">Upload <span class="text-red">*</span></label>
+
+                            <div class="col-sm-6">
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar progress-bar-upload 12" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="button" class="btn" value="Browse" ng-click="chooseFile(12)">
+                                <button type="button" class="btn btn-primary preview" data-toggle="modal" data-target="#previewFile" ng-click="changeFile(12)" ng-class="{ 'form-hidden': profile.ChuKy.NguoiDangKy == undefined || profile.ChuKy.NguoiDangKy == ''}">Preview</button>
+                                <input type="file" id="uploadFile12" name="uploads12[]" accept="image/*" style="display: none;">
+                                <p class="help-block">{{lang.only_jpg}} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box box-primary">
+                    <div class="overlay" ng-style="!isWait && {'display':'none'}">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.protector_signature}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="file" class="col-sm-2 control-label">Upload <span class="text-red">*</span></label>
+
+                            <div class="col-sm-6">
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar progress-bar-upload 13" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="button" class="btn" value="Browse" ng-click="chooseFile(13)">
+                                <button type="button" class="btn btn-primary preview" data-toggle="modal" data-target="#previewFile" ng-click="changeFile(13)" ng-class="{ 'form-hidden': profile.ChuKy.NguoiGiamHo == undefined || profile.ChuKy.NguoiGiamHo == ''}">Preview</button>
+                                <input type="file" id="uploadFile13" name="uploads13[]" accept="image/*" style="display: none;">
+                                <p class="help-block">{{lang.only_jpg}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnNext">{{lang.next}}</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <!-- Modal preview files -->
+    <div class="modal fade" id="previewFile" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Preview</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="profile12" ng-show="file == 12" ng-class="{ 'form-hidden': file != 12 }"></div>
+                    <div id="profile13" ng-show="file == 13" ng-class="{ 'form-hidden': file != 13 }"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

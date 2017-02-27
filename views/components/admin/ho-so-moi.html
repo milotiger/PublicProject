@@ -1,0 +1,99 @@
+<section class="content-header">
+    <h1>
+        {{lang.file_manager}}
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12 connectedSortable">
+            <!-- New -->
+            <div class="box">
+                <div cg-busy="promise"></div>
+                <div class="box-header">
+                    <i class="ion ion-clipboard"></i>
+                    <h3 class="box-title">{{lang.new_files_list}}</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="services-table" class="table table-bordered table-striped" data-page-length="3">
+                        <thead>
+                            <tr>
+                                <th>{{lang.category}}</th>
+                                <th>{{lang.name}}</th>
+                                <th>Email</th>
+                                <th>{{lang.registered_time}}</th>
+                                <th>{{lang.update_stage}}</th>
+                                <th class="text-center">{{lang.transmit}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in listFreeService">
+                                <td>{{item.serviceName}}</td>
+                                <td>{{item.userID.HoTen}}</td>
+                                <td>{{item.userID.Email}}</td>
+                                <td>{{item.TimeStamp}}</td>
+                                <td>{{item.stage}}</td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#staffModal" ng-click="selectService($index)"><i class="fa fa-plus"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /New -->
+        </section>
+        <!-- Staff modal -->
+        <div class="modal fade" id="staffModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">{{lang.agency_list}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="angency-table" class="table table-bordered table-striped" data-page-length="10">
+                            <thead>
+                                <tr>
+                                    <th>{{lang.agency}}</th>
+                                    <th>{{lang.name}}</th>
+                                    <th>Email</th>
+                                    <th>{{lang.number_of_records}}</th>
+                                    <th>{{lang.transmit}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in listStaff">
+                                    <td>{{lang.updating}}...</td>
+                                    <td>{{item.HoTen}}</td>
+                                    <td>{{item.Email}}</td>
+                                    <td>{{item.Number}}</td>
+                                    <td class="text-center">
+                                        <input icheck type="radio" name="iCheck" class="flat-red" id="r-btn-{{$index}}" ng-value={{$index}} ng-model="$parent.currentStaff" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="assignStaff()">{{lang.assign}}</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{lang.cancel}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function() {
+        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue'
+        });
+    });
+</script>

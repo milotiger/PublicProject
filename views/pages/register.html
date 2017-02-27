@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="registerCtr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MASDOC | {{lang.sign_up}}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../bower_components/angular-busy/dist/angular-busy.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style-skin.css">
+    <link rel="stylesheet" href="../assets/css/plugins/iCheck/blue.css">
+    <link rel="stylesheet" href="../bower_components/sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+
+<body class="hold-transition register-page">
+    <div class="register-box">
+        <div class="register-logo">
+            <a href=""><b>MASDOC</b></a>
+        </div>
+
+        <div class="register-box-body">
+            <p class="login-box-msg">{{lang.new_account}}</p>
+
+            <form name="userForm" novalidate>
+                <div cg-busy="promise"></div>
+                <div class="form-group has-feedback" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+                    <input type="text" class="form-control" name="name" ng-model="newUser.HoTen" placeholder="{{lang.name}}" required>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">{{lang.name_null}}</p>
+                </div>
+                <div class="form-group has-feedback" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                    <input type="email" class="form-control" name="email" ng-model="newUser.Email" placeholder="Email" required>
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">{{lang.email_not_true}}</p>
+                </div>
+                <div class="form-group has-feedback" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+                    <input type="password" class="form-control" name="password" ng-model="newUser.Password" placeholder="{{lang.account_password}}" required ng-minlength="6" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    <p ng-show="userForm.password.$error.minlength" class="help-block">{{lang.pass_min_six}}</p>
+                    <p ng-show="userForm.password.$error.pattern" class="help-block">{{lang.pass_error}}</p>
+                    <p ng-show="userForm.password.$invalid && !userForm.password.$pristine && !userForm.password.$error.minlength && !userForm.password.$error.pattern" class="help-block">Mật khẩu không được trống.</p>
+                </div>
+                <div class="form-group has-feedback" ng-class="{ 'has-error' : userForm.repassword.$invalid && !userForm.repassword.$pristine }">
+                    <input type="password" class="form-control" name="repassword" ng-model="repassword" placeholder="{{lang.retype_password}}" valid-password="newUser.Password" required>
+                    <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                    <p ng-show="userForm.repassword.$error.noMatch" class="help-block">{{lang.retype_error}}</p>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-6 text-center" style="margin-top: 15px;">
+                        <label>
+                            <input type="radio" name="kind" value="0" class="flat-red" checked>
+                            {{lang.personal}}
+                        </label>
+                    </div>
+                    <div class="col-sm-6 text-center" style="margin-top: 15px;">
+                        <label>
+                            <input type="radio" name="kind" value="1" class="flat-red">
+                            {{lang.company}}
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox icheck">
+                            <label>
+                                <input type="checkbox" class="flat-red" name="rule" checked> {{lang.agree}} <a href="#">{{lang.rules}}</a>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-xs-4">
+                        <button type="button" class="btn btn-primary btn-block btn-flat" ng-disabled="!userForm.$valid" ng-click="submitForm(userForm.$valid)">{{lang.sign_up}}</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+            <div class="social-auth-links text-center">
+                <p>----- OR -----</p>
+            </div>
+            <div class="text-center">
+                <a href="login.html">{{lang.had_account}}</a>
+            </div>
+        </div>
+        <!-- /.form-box -->
+    </div>
+    <!-- /.register-box -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="../bower_components/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../bower_components/angular-busy/dist/angular-busy.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/services/app.globalService.js"></script>
+    <script src="../assets/js/controller/app.register.js"></script>
+
+    <script>
+        $(function() {
+            $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue'
+            });
+        });
+    </script>
+</body>
+
+</html>

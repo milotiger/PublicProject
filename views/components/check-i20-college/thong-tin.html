@@ -1,0 +1,420 @@
+<section class="content-header" style="display: inline;">
+    <h3 style="margin-top: 0; display: inline;">
+        <small>{{lang.file_info}}</small>
+    </h3>
+    <button class="btn btn-sm btn-primary pull-right" ng-click="nextAdminStep()" ng-if="index > 3">{{lang.done}}</button>
+</section>
+<!-- Main content -->
+<section class="content" ng-hide="index > 3">
+    <div class="row">
+        <section class="col-lg-12 connectedSortable" ng->
+            <!-- Horizontal Form -->
+            <form class="form-horizontal" ng-show="index === 0">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Passport</h3>
+                    </div>
+                    <div class="box-body">
+                        <div id="passport"></div>
+                    </div>
+                </div>
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.personal_infor}}</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{lang.name}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="lastName" ng-model="basicInfo.HoTen.Ho" placeholder="{{lang.last_name}}" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control no-error" name="middleName" ng-model="basicInfo.HoTen.ChuLot" placeholder="{{lang.middle_name}}">
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="firstName" ng-model="basicInfo.HoTen.Ten" placeholder="{{lang.first_name}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{lang.sex}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <select ng-model="basicInfo.GioiTinh" class="form-control select2 sex" style="width: 100%;">
+									<option ng-repeat="item in sex">{{item}}</option>
+								</select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="datemask" class="col-sm-2 control-label">{{lang.day_of_birth}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="datemask" ng-model="basicInfo.NgaySinh" required>
+                            </div>
+
+                            <div class="col-sm-1"></div>
+
+                            <label for="" class="col-sm-2 control-label">{{lang.national}}</label>
+
+                            <div class="col-sm-3">
+                                <select ng-model="basicInfo.QuocTich" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in country">{{item}}</option>
+								</select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="placeOfBirth" class="col-sm-2 control-label">{{lang.place_of_birth}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="placeOfBirth" ng-model="basicInfo.NoiSinh.ThanhPho" placeholder="{{lang.province}}/{{lang.city}}" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <select ng-model="basicInfo.NoiSinh.QuocGia" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in country">{{item}}</option>
+								</select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">{{lang.address}}</label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="basicAddress" ng-model="basicInfo.DiaChi.SoNha" placeholder="{{lang.number_address}}">
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="provinceAddress" ng-model="basicInfo.DiaChi.ThanhPho" placeholder="{{lang.province}}/{{lang.city}}">
+                            </div>
+                            <div class="col-sm-3">
+                                <select ng-model="basicInfo.DiaChi.QuocGia" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in country">{{item}}</option>
+								</select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-sm-2 control-label">{{lang.phone_number}}</label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="phone" ng-model="basicInfo.SoDienThoai" placeholder="Phone">
+                            </div>
+
+                            <div class="col-sm-1"></div>
+
+                            <label for="email" class="col-sm-2 control-label">Email</label>
+
+                            <div class="col-sm-3">
+                                <input type="email" class="form-control" id="email" ng-model="basicInfo.Email" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.protector_infor}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">{{lang.name}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="basicInfo.NguoiGiamHo.HoTen.Ho" id="parentLastName" placeholder="{{lang.last_name}}" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="basicInfo.NguoiGiamHo.HoTen.ChuLot" id="parentMiddleName" placeholder="{{lang.middle_name}}">
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="basicInfo.NguoiGiamHo.HoTen.Ten" id="parentFirstName" placeholder="{{lang.first_name}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">{{lang.relationship}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <select ng-model="basicInfo.NguoiGiamHo.QuanHe" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in relation">{{item}}</option>
+								</select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">{{lang.address}}</label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="basicInfo.NguoiGiamHo.DiaChi.SoNha" id="parentBasicAddress" placeholder="{{lang.number_address}}">
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="basicInfo.NguoiGiamHo.DiaChi.ThanhPho" id="parentProvinceAddress" placeholder="{{lang.province}}/{{lang.city}}">
+                            </div>
+                            <div class="col-sm-3">
+                                <select ng-model="basicInfo.NguoiGiamHo.DiaChi.QuocGia" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in country">{{item}}</option>
+								</select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="parentPhone" class="col-sm-2 control-label">{{lang.phone_number}}</label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="basicInfo.NguoiGiamHo.SoDienThoai" id="parentPhone" placeholder="Phone">
+                            </div>
+
+                            <div class="col-sm-1"></div>
+
+                            <label for="parentEmail" class="col-sm-2 control-label">Email</label>
+
+                            <div class="col-sm-3">
+                                <input type="email" class="form-control" ng-model="basicInfo.NguoiGiamHo.Email" id="parentEmail" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right" ng-click="nextStep()">{{lang.next}}</button>
+                        <label class="pull-right check">
+                            <input type="checkbox" class="flat-red" id="check0"> {{lang.checked}}
+                        </label>
+                    </div>
+                </div>
+            </form>
+
+            <form class="form-horizontal" ng-show="index === 1">
+                <!-- box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.school_report}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div id="profile"></div>
+                    </div>
+                </div>
+                <!-- /. box -->
+                <!-- box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.school_infor}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="datemask" class="col-sm-2 control-label">{{lang.school_name}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HocBa.ThongTinTruong.TenTruong" type="text" class="form-control" id="schoolName" placeholder="{{lang.school_name}}" required>
+                            </div>
+
+                            <div class="col-sm-1"></div>
+
+                            <label for="" class="col-sm-2 control-label">{{lang.graduation_year}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.ThongTinTruong.NamTotNghiep" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in graduationYear">{{item}}</option>
+								</select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">{{lang.address}}</label>
+
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HocBa.ThongTinTruong.DiaChi.SoNha" type="text" class="form-control" id="schoolAddress" placeholder="{{lang.number_address}}">
+                            </div>
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HocBa.ThongTinTruong.DiaChi.ThanhPho" type="text" class="form-control" id="schoolProAddress" placeholder="{{lang.province}}/{{lang.city}}">
+                            </div>
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.ThongTinTruong.DiaChi.QuocGia" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in nations">{{item}}</option>
+								</select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /. box	 -->
+                <!-- box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.learning_result}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">{{lang.class_10}} <span class="text-red">*</span></label>
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.KetQua.Lop10.HocLuc" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in hoclucs">{{item}}</option>
+								</select>
+                                <p class="help-block">{{lang.learning_capacity}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.KetQua.Lop10.HanhKiem" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in hanhkiems">{{item}}</option>
+								</select>
+                                <p class="help-block">{{lang.conduct}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HocBa.KetQua.Lop10.DiemToan" type="text" class="form-control numeric" id="mathPoint0" placeholder="{{lang.math_score}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">{{lang.class_11}} <span class="text-red">*</span></label>
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.KetQua.Lop11.HocLuc" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in hoclucs">{{item}}</option>
+								</select>
+                                <p class="help-block">{{lang.learning_capacity}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.KetQua.Lop11.HanhKiem" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in hanhkiems">{{item}}</option>
+								</select>
+                                <p class="help-block">{{lang.conduct}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HocBa.KetQua.Lop11.DiemToan" type="text" class="form-control numeric" id="mathPoint0" placeholder="{{lang.math_score}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">{{lang.class_12}} <span class="text-red">*</span></label>
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.KetQua.Lop12.HocLuc" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in hoclucs">{{item}}</option>
+								</select>
+                                <p class="help-block">{{lang.learning_capacity}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.KetQua.Lop12.HanhKiem" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in hanhkiems">{{item}}</option>
+								</select>
+                                <p class="help-block">{{lang.conduct}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HocBa.KetQua.Lop12.DiemToan" type="text" class="form-control numeric" id="mathPoint0" placeholder="{{lang.math_score}}" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right" ng-click="nextStep()">{{lang.next}}</button>
+                        <label class="pull-right check">
+                            <input type="checkbox" class="flat-red" id="check1"> {{lang.checked}}
+                        </label>
+                    </div>
+                </div>
+                <!-- /. box -->
+            </form>
+
+            <form class="form-horizontal" ng-show="index === 2">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.certificate_graduation}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div id="graduation"></div>
+                    </div>
+                </div>
+                <div class="box box-primary">
+                    <div class="box-header with-header">
+                        <h3 class="box-title">{{lang.certificate_infor}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="datemask" class="col-sm-2 control-label">{{lang.date_certificate}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input ng-model="profile.BangTotNghiep.NgayCapBang" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="datemask" required>
+                            </div>
+
+                            <label for="" class="col-sm-2 control-label">{{lang.classification}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <select ng-model="profile.BangTotNghiep.XepLoai" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in xeploais">{{item}}</option>
+								</select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right" ng-click="nextStep()">{{lang.next}}</button>
+                        <label class="pull-right check">
+                            <input type="checkbox" class="flat-red" id="check2"> {{lang.checked}}
+                        </label>
+                    </div>
+                </div>
+            </form>
+
+            <form class="form-horizontal" ng-show="index === 3" ng-class="{ 'form-hidden': profile.BangTiengAnh.Valid == false }">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.english_degree}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div id="english"></div>
+                    </div>
+                </div>
+                <div class="box box-primary">
+                    <div class="box-header with-header">
+                        <h3 class="box-title">{{lang.degree_infor}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">{{lang.degree_kind}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <select ng-model="profile.BangTiengAnh.LoaiBang" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in loaibangs">{{item}}</option>
+								</select>
+                            </div>
+
+                            <label for="datemask" class="col-sm-2 control-label">{{lang.test_day}} </label>
+
+                            <div class="col-sm-3">
+                                <input ng-model="profile.BangTiengAnh.NgayThi" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="datemask">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">{{lang.result}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-2">
+                                <input ng-model="profile.BangTiengAnh.Diem.Nghe" type="text" class="form-control numeric" id="listening" placeholder="0" required>
+                                <p class="help-block">{{lang.listen}} </p>
+                            </div>
+                            <div class="col-sm-2">
+                                <input ng-model="profile.BangTiengAnh.Diem.Noi" type="text" class="form-control numeric" id="speaking" placeholder="0" required>
+                                <p class="help-block">{{lang.speak}}</p>
+                            </div>
+                            <div class="col-sm-2">
+                                <input ng-model="profile.BangTiengAnh.Diem.Doc" type="text" class="form-control numeric" id="reading" placeholder="0" required>
+                                <p class="help-block">{{lang.read}}</p>
+                            </div>
+                            <div class="col-sm-2">
+                                <input ng-model="profile.BangTiengAnh.Diem.Viet" type="text" class="form-control numeric" id="writing" placeholder="0" required>
+                                <p class="help-block">{{lang.write}}</p>
+                            </div>
+                            <div class="col-sm-2">
+                                <input ng-model="profile.BangTiengAnh.Diem.DiemTong" type="text" class="form-control numeric" id="total" placeholder="0" required>
+                                <p class="help-block">{{lang.total}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right" ng-click="nextStep()">{{lang.next}}</button>
+                        <label class="pull-right check">
+                            <input type="checkbox" class="flat-red" id="check2"> {{lang.checked}}
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</section>
+<script>
+    $(function() {
+        $("#datemask").inputmask("dd/mm/yyyy", {
+            "placeholder": "dd/mm/yyyy"
+        });
+        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue'
+        });
+        setTimeout(function() {
+            $(".select2").select2();
+        }, 800);
+    });
+</script>

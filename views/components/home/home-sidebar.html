@@ -1,0 +1,60 @@
+<ul class="sidebar-menu">
+    <li class="header" ng-if="role > 0">{{lang.employee}}</li>
+    <li class="treeview" ng-if="role > 0" ng-class="{ 'active': $state.includes('app.admin.quan-ly-dich-vu')}">
+        <a href="dashboard/admin/quan-ly-dich-vu/kiem-tra-hoso">
+            <i class="fa fa-suitcase"></i>
+            <span>{{lang.file_manager}}</span>
+        </a>
+    </li>
+    <li class="header" ng-if="role == 0">{{lang.home}}</li>
+    <li class="treeview" ng-if="role == 0" ng-class="{ 'active': $state.includes('app')}">
+        <a href="dashboard/">
+            <i class="fa fa-history"></i>
+            <span>{{lang.history}}</span>
+        </a>
+    </li>
+    <li class="treeview" ng-if="role == 0" ng-class="{ 'active' : $state.includes('app.create') }">
+        <a href="dashboard/service/dich-vu-moi">
+            <i class="fa fa-cubes"></i>
+            <span>{{lang.new_service}}</span>
+        </a>
+    </li>
+    <!--<li class="treeview">
+        <a href="dashboard/">
+            <i class="fa fa-tags"></i>
+            <span>Cập nhật tài khoản</span>
+        </a>
+    </li>-->
+    <li class="header" ng-if="role > 1">Agency</li>
+    <li class="treeview" ng-if="role > 1" ng-class="{ 'active' : $state.includes('app.admin.ho-so-moi') || $state.includes('app.admin.ho-so-da-chuyen')}">
+        <a ng-click="changeActive(0)" class="pointer">
+            <i class="fa fa-paperclip"></i>
+            <span>{{lang.files}}</span>
+            <i class="fa fa-angle-down pull-right" ng-class="{ 'fa-angle-left': !isOpen, 'fa-angle-down': isOpen }"></i>
+        </a>
+        <ul class="treeview-menu" ng-show="isOpen" style="display : block; transition: 5s linear all">
+            <li ng-class="{ 'active' : $state.includes('app.admin.ho-so-moi')}"><a href="dashboard/admin/ho-so-moi"><i class="fa fa-circle-o"></i> {{lang.new_file}}</a></li>
+            <li ng-class="{ 'active' : $state.includes('app.admin.ho-so-da-chuyen') }"><a href="dashboard/admin/ho-so-da-chuyen"><i class="fa fa-circle-o"></i> {{lang.transmited_files}}</a></li>
+        </ul>
+    </li>
+    <li class="header" ng-if="role > 2">{{lang.admin}}</li>
+    <li class="treeview" ng-if="role > 2" ng-class="{ 'active' : $state.includes('app.admin.quan-li-tai-khoan') }">
+        <a href="dashboard/admin/quan-ly-tai-khoan">
+            <i class="fa fa-users"></i>
+            <span>{{lang.acc_manager}}</span>
+        </a>
+    </li>
+    <li class="treeview" ng-if="role > 2" ng-class="{ 'active' : $state.includes('app.admin') }">
+        <a class="pointer" ng-click="changeActive(-1)">
+            <i class="fa fa-users"></i>
+            <span>{{lang.services_mng}}</span>
+            <i class="fa fa-angle-down pull-right" ng-class="{ 'fa-angle-left': !isUserOpen, 'fa-angle-down': isUserOpen }"></i>
+        </a>
+        <ul class="treeview-menu" ng-show="isUserOpen" style="display : block; transition: 5s linear all">
+            <li ng-class="{ 'active' : $state.includes('app.admin.thong-tin-thanh-toan') }"><a href="dashboard/admin/thong-tin-thanh-toan"><i class="fa fa-circle-o"></i> {{lang.pay_info}}</a></li>
+            <li ng-class="{ 'active' : $state.includes('app.admin.le-phi') }"><a href="dashboard/admin/le-phi"><i class="fa fa-circle-o"></i> {{lang.fee}}</a></li>
+            <li ng-class="{ 'active' : $state.includes('app.admin.truong') }"><a href="dashboard/admin/truong"><i class="fa fa-circle-o"></i> {{lang.school}}</a></li>
+            <li ng-class="{ 'active' : $state.includes('app.admin.bieu-mau') }"><a href="dashboard/admin/bieu-mau"><i class="fa fa-circle-o"></i> {{lang.form}}</a></li>
+        </ul>
+    </li>
+</ul>

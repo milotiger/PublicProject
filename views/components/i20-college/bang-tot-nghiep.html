@@ -1,0 +1,108 @@
+<section class="content-header">
+    <h3 style="margin-top : 0">
+        {{lang.i20_input}}
+        <small>{{lang.certificate_graduation}}</small>
+    </h3>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12 connectedSortable">
+            <form class="form-horizontal" ng-submit="saveInfo(1)">
+                <div class="box box-primary">
+                    <div class="overlay" ng-style="!isWait && {'display':'none'}">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.upload_certificate_of_high_school_graduation}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="file" class="col-sm-3 control-label">{{lang.original}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-6">
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar progress-bar-upload 3" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="button" class="btn btn-flat" value="Browse" ng-click="chooseFile(3)">
+                                <button type="button" class="btn btn-primary preview" data-toggle="modal" data-target="#previewFile" ng-click="changeFile(3)" ng-class="{ 'form-hidden': profile.BangTotNghiep.FileUrl == undefined || profile.BangTotNghiep.FileUrl == ''}">Preview</button>
+                                <input type="file" id="uploadFile3" name="uploads3[]" accept="application/pdf" style="display: none;">
+                                <p class="help-block">{{lang.only_pdf}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="fileEng" class="col-sm-3 control-label">{{lang.school_report_ver_Eng}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-6">
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar progress-bar-upload 4" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="button" class="btn btn-flat" value="Browse" ng-click="chooseFile(4)">
+                                <button type="button" class="btn btn-primary preview" data-toggle="modal" data-target="#previewFile" ng-click="changeFile(4)" ng-class="{ 'form-hidden': profile.BangTotNghiep.FileEngUrl == undefined || profile.BangTotNghiep.FileEngUrl == ''}">Preview</button>
+                                <input type="file" id="uploadFile4" name="uploads4[]" accept="application/pdf" style="display: none;">
+                                <p class="help-block">{{lang.only_pdf}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box box-primary">
+                    <div class="box-header with-header">
+                        <h3 class="box-title">{{lang.certificate_infor}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="datemask" class="col-sm-2 control-label">{{lang.date_certificate}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input ng-model="profile.BangTotNghiep.NgayCapBang" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="datemask" required>
+                            </div>
+
+                            <label for="" class="col-sm-2 control-label">{{lang.classification}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <select ng-model="profile.BangTotNghiep.XepLoai" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in xeploais">{{item}}</option>
+								</select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnNext">{{lang.next}}</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <!-- Modal preview files -->
+    <div class="modal fade" id="previewFile" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Preview</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="profile3" ng-show="file == 3" ng-class="{ 'form-hidden': file != 3 }"></div>
+                    <div id="profile4" ng-show="file == 4" ng-class="{ 'form-hidden': file != 4 }"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(function() {
+        $("#datemask").inputmask("dd/mm/yyyy", {
+            "placeholder": "dd/mm/yyyy"
+        });
+        setTimeout(function() {
+            $(".select2").select2();
+        }, 700);
+    });
+</script>

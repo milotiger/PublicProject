@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="loginCtr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MASDOC | {{lang.sign_in}}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../bower_components/angular-busy/dist/angular-busy.min.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap-social/bootstrap-social.css">
+
+    <link rel="stylesheet" href="../assets/css/plugins/iCheck/blue.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style-skin.css">
+    <link rel="stylesheet" href="../bower_components/sweetalert/dist/sweetalert.css">
+</head>
+
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href=""><b>MASDOC</b></a>
+        </div>
+        <div class="login-box-body">
+            <p class="login-box-msg">{{lang.sign_in}}</p>
+
+            <form name="loginForm" novalidate>
+                <div cg-busy="promise"></div>
+                <div class="form-group has-feedback" ng-class="{ 'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine }">
+                    <input type="email" class="form-control" name="email" ng-model="loginUser.Email" placeholder="Email" required>
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">{{lang.email_not_true}}</p>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" name="password" ng-model="loginUser.Password" placeholder="Mật khẩu" id="startSubmit" required>
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox icheck">
+                            <label>
+                                <input type="checkbox" class="flat-red"> {{lang.remember_me}}
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-xs-4">
+                        <button type="button" class="btn btn-primary btn-block btn-flat" ng-disabled="!loginForm.$valid" ng-click="submitForm(loginForm.$valid)">{{lang.sign_in}}</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+            <!--<div class="social-auth-links text-center">
+                <p>----- OR -----</p>
+                <a href="/api/auth/facebook" class="btn btn-block btn-social btn-facebook">
+                    <span class="fa fa-facebook"></span>{{lang.sign_in_fb}}
+                </a>
+            </div>-->
+            <div class="text-center">
+                <a href="#" class="text-center" data-toggle="modal" data-target="#resetModal">{{lang.forgot_pass}}</a><br/>
+                <a href="register.html" class="text-center">{{lang.new_account}}</a>
+            </div>
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+    <!-- /.login-box -->
+
+    <div class="modal fade" id="resetModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Reset Password</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="EmailReset" class="control-label">Email <span class="text-red">*</span></label>
+                            <input type="text" class="form-control" id="EmailReset" ng-model="useremail">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="forgotPassword()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="../assets/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="../bower_components/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../bower_components/angular-busy/dist/angular-busy.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/services/app.globalService.js"></script>
+    <script src="../assets/js/controller/app.login.js"></script>
+
+    <script>
+        $(function() {
+            $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue'
+            });
+        });
+    </script>
+</body>
+
+</html>

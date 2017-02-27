@@ -1,0 +1,25 @@
+<ul class="sidebar-menu">
+    <li class="header">{{lang.i20_checking}}</li>
+    <li class="treeview">
+        <a ng-click="changeActive(0)" class="pointer">
+            <i class="fa fa-paperclip"></i>
+            <span>{{lang.file_info}}</span>
+            <i class="fa fa-angle-down pull-right" ng-class="{ 'fa-angle-left': !isOpen, 'fa-angle-down': isOpen }"></i>
+        </a>
+        <ul class="treeview-menu" ng-show="isOpen" style="display : block;  transition: 5s linear all">
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.thong-tin')}"><a class="pointer" id="state0" ng-click="checkStep(0)"><i class="fa fa-circle-o"></i> {{lang.personal_infor}}</a></li>
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.hoc-ba') }"><a class="pointer" id="state1" ng-click="checkStep(1)"><i class="fa fa-circle-o"></i> {{lang.school_report}}</a></li>
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.bang-tot-nghiep') }"><a class="pointer" id="state2" ng-click="checkStep(2)"><i class="fa fa-circle-o"></i> {{lang.certificate_graduation}}</a></li>
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.bang-tieng-anh')}"><a class="pointer" id="state3" ng-click="checkStep(3)"><i class="fa fa-circle-o"></i> {{lang.english_degree}}</a></li>
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.ho-chieu') }"><a class="pointer" id="state4" ng-click="checkStep(4)"><i class="fa fa-circle-o"></i> {{lang.passport}}</a></li>
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.hinh-ho-chieu') }"><a class="pointer" id="state5" ng-click="checkStep(5)"><i class="fa fa-circle-o"></i> {{lang.passport_img}}</a></li>
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.chu-ky') }"><a class="pointer" id="state6" ng-click="checkStep(6)"><i class="fa fa-circle-o"></i> {{lang.signature}}</a></li>
+        </ul>
+    </li>
+    <li class="treeview">
+        <a class="pointer" ng-click="checkStep(-1)">
+            <i class="fa fa-mail-reply"></i>
+            <span>{{lang.back}}</span>
+        </a>
+    </li>
+</ul>

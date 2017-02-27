@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <base href="/dashboard">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>MASDOC</title>
+
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./bower_components/sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" href="./bower_components/angular-busy/dist/angular-busy.min.css">
+    <link rel="stylesheet" href="./bower_components/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="./assets/css/style-skin.css">
+    <link rel="stylesheet" href="./assets/css/plugins/dataTable/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/plugins/iCheck/blue.css">
+    <link rel="stylesheet" href="./assets/css/plugins/iCheck/minimal/blue.css">
+    <link rel="stylesheet" href="./assets/css/plugins/select2/select2.min.css">
+    <link rel="stylesheet" href="./assets/css/plugins/StepMenu/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <!--<link rel="stylesheet" type="text/css" href="./assets/build/css/app.min.css">-->
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <div ng-controller="sidebarCtr">
+            <ng-include src="'./pages/header.html'" scope="" onload=""></ng-include>
+        </div>
+
+        <div class="main-sidebar" ng-controller="sidebarCtr">
+            <ng-include src="'./pages/sidebar.html'" scope="" onload=""></ng-include>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div ui-view="content-view"></div>
+        </div>
+
+        <ng-include src="'./pages/footer.html'" scope="" onload=""></ng-include>
+    </div>
+
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Plugins -->
+    <script src="./assets/js/plugins/dataTable/jquery.dataTables.min.js"></script>
+    <script src="./assets/js/plugins/dataTable/dataTables.bootstrap.min.js"></script>
+    <script src="./assets/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="./assets/js/plugins/select2/select2.full.min.js"></script>
+    <script src="./assets/js/plugins/inputMask/jquery.inputmask.js"></script>
+    <script src="./assets/js/plugins/inputMask/jquery.inputmask.date.extensions.js"></script>
+    <script src="./assets/js/plugins/inputMask/jquery.numeric.js"></script>
+    <script src="./bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- <script src="./assets/build/js/plugins.min.js"></script> -->
+    <!-- /. End plugins -->
+    <!-- Angular -->
+    <script src="./bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="./bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="./bower_components/angular-busy/dist/angular-busy.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/config/app.route.js"></script>
+    <script src="./assets/js/config/app.config.js"></script>
+    <script src="./assets/js/services/app.globalService.js"></script>
+    <script src="./assets/js/services/app.userService.js"></script>
+    <script src="./assets/js/services/app.adminService.js"></script>
+    <script src="./assets/js/controller/app.sidebar.js"></script>
+    <script src="./assets/js/controller/app.home.js"></script>
+    <script src="./assets/js/controller/app.info.js"></script>
+    <script src="./assets/js/controller/app.profile.js"></script>
+    <script src="./assets/js/controller/app.admin.js"></script>
+    <script src="./assets/js/controller/app.review.js"></script>
+    <script src="./assets/js/controller/app.checki20.js"></script>
+    <script src="./assets/js/controller/app.file.js"></script>
+    <script src="./assets/js/controller/app.services.js"></script>
+    <!-- <script src="./assets/build/js/app.js"></script> -->
+    <!--<script src="./assets/build/js/app.min.js"></script>-->
+    <!-- /. End angular -->
+</body>
+
+</html>

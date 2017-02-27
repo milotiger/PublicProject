@@ -1,0 +1,80 @@
+.skin-blue .content-header {
+    background-color: white;
+    height: 51px;
+}
+
+.skin-blue .content-header div {
+    padding: 0;
+}
+
+.skin-blue .content-header div h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.i20-action {
+    margin-bottom: 20px;
+}
+
+.i20-action .error-btn {
+    margin-right: 10px;
+}
+
+.error-report .select2-container--default {
+    width: inherit !important;
+}
+
+.clicked a {
+    color: white !important;
+}
+
+.english-certificate {
+    padding-top: 8px;
+}
+
+.upload-label,
+.upload-input {
+    margin-top: 35px;
+}
+
+.header-payment {
+    margin-bottom: 15px;
+}
+
+.iradio_square-blue,
+.icheckbox_square-blue {
+    margin-bottom: 4px;
+}
+
+.progress-bar-lg {
+    height: 36px;
+}
+
+.progress-bar-upload {
+    line-height: 33px;
+}
+
+.preview {
+    margin-left: 10px;
+}
+
+.no-error {
+    border-color: #d2d6de !important;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.no-drop {
+    cursor: no-drop;
+}
+
+.check {
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.flag-img {
+    width: 100px;
+}

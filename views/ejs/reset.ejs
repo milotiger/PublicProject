@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MASDOC | Quên Mật Khẩu</title>
+    <!-- Tell the browser to be responsive to screen width-->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/bower_components/angular-busy/dist/angular-busy.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style-skin.css">
+    <link rel="stylesheet" href="/bower_components/sweetalert/dist/sweetalert.css">
+  </head>
+  <body ng-app="app" ng-controller="resetCtr" class="hold-transition login-page">
+    <div class="login-box">
+      <div class="login-logo"><a href=""><b>MASDOC</b></a></div>
+      <div class="login-box-body">
+        <p class="login-box-msg">Đổi Mật Khẩu</p>
+        <form name="userForm" novalidate="">
+          <div ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }" class="form-group has-feedback">
+            <input type="password" name="password" ng-model="newPassword" placeholder="Mật khẩu mới" required="" ng-minlength="6" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" class="form-control"><span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <p ng-show="userForm.password.$error.minlength" class="help-block">Mật khẩu ít nhất 6 kí tự.</p>
+            <p ng-show="userForm.password.$error.pattern" class="help-block">Mật khẩu phải có chứa số, chữ hoa, thường và kí tự đặc biệt.</p>
+            <p ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine &amp;&amp; !userForm.password.$error.minlength &amp;&amp; !userForm.password.$error.pattern" class="help-block">Mật khẩu không được trống.</p>
+          </div>
+          <div ng-class="{ 'has-error' : userForm.repassword.$invalid &amp;&amp; !userForm.repassword.$pristine }" class="form-group has-feedback">
+            <input type="password" name="repassword" ng-model="repassword" placeholder="Nhập lại mật khẩu mới" valid-password="newPassword" required="" class="form-control"><span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+            <p ng-show="userForm.repassword.$error.noMatch" class="help-block">Mật khẩu không trùng khớp.</p>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 text-center">
+              <button type="button" ng-disabled="!userForm.$valid" ng-click="submitForm(userForm.$valid)" class="btn btn-primary btn-block btn-flat">Đổi mật khẩu</button>
+            </div>
+            <!-- /.col-->
+          </div>
+        </form>
+      </div>
+      <!-- /.login-box-body-->
+    </div>
+    <!-- /.login-box-->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>      
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/bower_components/angular-busy/dist/angular-busy.min.js"></script>
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/controller/app.reset.js"></script>
+    <script src="/assets/js/services/app.globalService.js"></script>
+  </body>
+</html>

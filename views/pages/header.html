@@ -1,0 +1,65 @@
+<header class="main-header">
+    <a href="#" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">MDC</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">MASDOC</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a class="dropdown-toggle" data-toggle="dropdown" style="cursor: pointer;">
+                        <i class="fa fa-cog"></i>
+                        <span class="hidden-xs">{{lang.setting}}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="user-header">
+                            <img src="../../assets/images/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                            <p>
+                                {{current.HoTen}}
+                                <small>{{current.Email}}</small>
+                            </p>
+                        </li>
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <button type="button" class="btn btn-default btn-flat" data-toggle="modal" data-target="#lang">{{lang.language}}</button>
+                            </div>
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-default btn-flat" ng-click="logout()">{{lang.logout}}</button>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- Modal preview languages -->
+<div class="modal fade" id="lang" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{lang.language}}</h4>
+            </div>
+            <div class="modal-body">
+                <a style="cursor: pointer; margin-right: 67px;" role="button" ng-click="setLang('vi')" data-dismiss="modal">
+                    <img class="flag-icon flag-img" src="https://lipis.github.io/flag-icon-css/flags/4x3/vn.svg"></span>
+                </a>
+                <a style="cursor: pointer;" role="button" ng-click="setLang('en')" data-dismiss="modal">
+                    <img class="flag-icon flag-img" src="https://lipis.github.io/flag-icon-css/flags/4x3/gb.svg"></img>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

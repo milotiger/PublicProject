@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <title>MASDOC</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="Landing Page Of MASDOC Project" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/index.css" />
+</head>
+
+<body ng-controller="indexCtr">
+    <div class="btn-wrapper back-to-top">
+        <a href="javascript:void(0);" class="btn btn-transparent" id="scrollToTop" style="display: none;">
+            <i class="fa fa-angle-double-up"></i>
+        </a>
+    </div>
+    <div class="ld-img-container">
+        <img src="./assets/images/landing.jpg" class="img-responsive" />
+        <a href="./pages/register.html" class="btn btn-default" id="ld-btn-signup">Sign Up</a>
+        <a href="./pages/login.html" class="btn btn-primary" id="ld-btn-signin">Sign In</a>
+        <div class="ld-content text-center">
+            <h1>MASDOC</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" id="ld-general-1">
+            <div class="col-md-8">
+                <div class="ld-table-image" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+                    <img src="./assets/images/duhoc.jpg" class="img-responsive" />
+                    <div class="ld-item-content">
+                        <h2 style="text-transform: uppercase; margin-left: 20px; color: white">Sứ mệnh</h2>
+                        <h4 style="margin-left: 20px; color: white" ng-hide="hoverDis">Giới thiệu các trang web hữu ích nhằm hỗ trợ sinh viên trong công cuộc tìm đúng trường Cao Đẳng, Đại học phù hợp với ước mơ du học của họ.</h4>
+                        <h5 style="margin-left: 20px; color: white" id="tx-2" ng-show="hoverDis">Chúng tôi có một sứ mệnh duy nhất đó là giới thiệu các trang web hữu ích nhằm hỗ trợ sinh viên trong công cuộc tìm đúng trường Cao Đẳng, Đại học phù hợp với ước mơ du học của họ. Để đạt được sứ mệnh này, chúng tôi cung cấp cho
+                            sinh viên một hệ thống khổng lồ bao gồm các khóa học trên toàn thế giới, được cấp bởi các trường Đại học, Cao đẳng tại Hoa Kỳ, Anh, Úc, New Zealand, Malaysia, Singapore và Hà Lan, Thụy Điển, Ireland, Canada. Sinh viên có thể
+                            tìm kiếm khóa học hay các sở đào tạo, so sánh và lưu lại các trường đã chọn, đọc các bài cảm nhận, tải thông tin, thậm chí còn có thể đặt câu hỏi và đăng kí trực tiếp với các trường Đại học</h5>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ld-table-image" ng-mouseover="hoverIn1()" ng-mouseleave="hoverOut1()">
+                    <img src="./assets/images/duhoc3.jpg" class="img-responsive" style="margin-bottom: 20px" />
+                    <div class="ld-item-content">
+                        <h2 style="text-transform: uppercase; margin-left: 10px; color: white; font-size: 18px"><i class="fa fa-phone"></i> <b>Tư vấn chuyên nghiệp và miễn phí</b></h2>
+                        <h5 style="margin-left: 10px; color: white" ng-show="hoverDis1">Chúng tôi cung cấp đầy đủ và toàn diện thông tin giúp bạn định hướng kế hoạch học tập phù hợp với khả năng và tài chính của bạn.
+                        </h5>
+                    </div>
+                </div>
+                <div class="ld-table-image" ng-mouseover="hoverIn2()" ng-mouseleave="hoverOut2()">
+                    <img src="./assets/images/duhoc4.jpg" class="img-responsive" style="margin-bottom: 20px" />
+                    <div class="ld-item-content">
+                        <h2 style="text-transform: uppercase; margin-left: 10px; color: white; font-size: 18px"><i class="fa fa-user"></i> <b>Là đại diện tuyển sinh của nhiều trường danh tiếng</b></h2>
+                        <h5 style="margin-left: 10px; color: white" ng-show="hoverDis2">Chúng tôi liên kết với nhiều trường trung học, cao đẳng và đại học có uy tín trên toàn thế giới, thường xuyên tổ chức hội thảo với các trường.</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="ld-general-2">
+            <div class="col-md-8">
+                <div class="ld-table-image" style="width: 100%; height: 100%" ng-mouseover="hoverIn3()" ng-mouseleave="hoverOut3()">
+                    <img src="./assets/images/duhoc2.jpg" class="img-responsive" />
+                    <div class="ld-item-content">
+                        <h2 style="text-transform: uppercase; margin-left: 20px; color: white">Trách nhiệm</h2>
+                        <h4 style="margin-left: 20px; color: white" ng-hide="hoverDis3">Tôn chỉ, tinh thần làm việc được quán triệt trong toàn công ty ở mọi nơi, mọi lúc và được xây dựng thành văn hóa truyền thống của công ty ngay từ những ngày đầu thành lập, được cụ thể hóa trong những việc làm hằng ngày.</h4>
+                        <h5 style="margin-left: 20px; color: white" id="tx-2" ng-show="hoverDis3">
+                            <b>Tôn trọng và tuân theo pháp luật Việt Nam và nước sinh viên đến du học.</b>
+                            <b>Tôn trọng quyền lợi và nguyện vọng của khách hàng, đối tác.</b>
+                            <b>Hiệu quả, hỗ trợ sinh viên cao nhất để đạt nguyện vọng du học, học tập.</b>
+                            <b>Minh bạch về tài chính, chi phí được thông báo đầy đủ, rõ ràng. Hợp tác thân thiện. Nỗ lực góp phần xây dựng
+							và phát triển nguồn nhân lực chất lượng cao cho Việt Nam và quốc tế.</b>
+                        </h5>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ld-table-image" ng-mouseover="hoverIn4()" ng-mouseleave="hoverOut4()">
+                    <img src="./assets/images/duhoc3.jpg" class="img-responsive" style="margin-bottom: 20px" />
+                    <div class="ld-item-content">
+                        <h2 style="text-transform: uppercase; margin-left: 10px; color: white; font-size: 18px"><i class="fa fa fa-cc-visa"></i> <b>Tỉ lệ xin Visa thành công cao</b></h2>
+                        <h5 style="margin-left: 10px; color: white" ng-show="hoverDis4">Tại MASDOC, tỷ lệ học sinh đạt visa là 98%. Với nhiều năm kinh nghiệm trong lĩnh vực tư vấn du học, chúng tôi đã giúp hàng ngàn học sinh xin visa thành công. </h5>
+                    </div>
+                </div>
+                <div class="ld-table-image" ng-mouseover="hoverIn5()" ng-mouseleave="hoverOut5()">
+                    <img src="./assets/images/duhoc4.jpg" class="img-responsive" style="margin-bottom: 20px" />
+                    <div class="ld-item-content">
+                        <h2 style="text-transform: uppercase; margin-left: 10px; color: white; font-size: 18px"><i class="fa fa fa-heart-o"></i> <b>Hỗ trợ nhiệt tình</b></h2>
+                        <h5 style="margin-left: 10px; color: white" ng-show="hoverDis5">Chúng tôi có số lượng nhân viên lớn, sẵn sàng hỗ trợ tận tình trong suốt quá trình làm hồ sơ, giúp bạn hoàn thành hồ sơ một cách nhanh chóng.</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ld-end">
+        <h4>Chúng tôi cam kết sẽ hỗ trợ các bạn chất lượng tốt nhất!</h4>
+    </div>
+    <div class="ld-footer">
+        <p>© Masdoc, Inc. &nbsp;| &nbsp;All Rights Reserved. &nbsp;| &nbsp;Privacy Policy </p>
+    </div>
+
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./assets/js/home.js"></script>
+
+    <script src="./bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="./bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="./bower_components/angular-busy/dist/angular-busy.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/controller/app.index.js"></script>
+</body>
+
+</html>

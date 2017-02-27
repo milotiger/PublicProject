@@ -1,0 +1,51 @@
+<section class="content-header">
+    <h1>
+        {{lang.file_manager}}
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-12 connectedSortable">
+            <!-- New -->
+            <div class="box">
+                <div cg-busy="promise"></div>
+                <div class="box-header">
+                    <i class="ion ion-clipboard"></i>
+                    <h3 class="box-title">{{lang.transmited_files_list}}</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="new-table" class="table table-bordered table-striped" data-page-length="10">
+                        <thead>
+                            <tr>
+                                <th>{{lang.category}}</th>
+                                <th>{{lang.name}}</th>
+                                <th>Email</th>
+                                <th>{{lang.registered_time}}</th>
+                                <th>{{lang.employee}}</th>
+                                <th>{{lang.agency}}</th>
+                                <th>{{lang.progress}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in listFollowService">
+                                <td>{{item.serviceName}}</td>
+                                <td>{{item.userID.HoTen}}</td>
+                                <td>{{item.userID.Email}}</td>
+                                <td>{{item.TimeStamp}}</td>
+                                <td>{{item.agencyID.HoTen}}</td>
+                                <td>Đang cập nhật...</td>
+                                <td>{{item.stage}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /New -->
+        </section>
+        <!-- /Left col -->
+    </div>
+</section>

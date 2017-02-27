@@ -1,0 +1,198 @@
+<section class="content-header">
+    <h3 style="margin-top: 0">
+        {{lang.i20_input}}
+        <small>{{lang.school_report}}</small>
+    </h3>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12 connectedSortable">
+            <form class="form-horizontal" ng-submit="saveInfo(0)">
+                <!-- box -->
+                <div class="box box-primary">
+                    <div class="overlay" ng-style="!isWait && {'display':'none'}">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.upload_school_report}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="file" class="col-sm-3 control-label">{{lang.original}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-6">
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar progress-bar-upload 1" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="button" class="btn" value="Browse" ng-click="chooseFile(1)">
+                                <button type="button" class="btn btn-primary preview" data-toggle="modal" data-target="#previewFile" ng-click="changeFile(1)" ng-class="{ 'form-hidden': profile.HocBa.FileUrl == undefined || profile.HocBa.FileUrl == ''}">Preview</button>
+                                <input type="file" id="uploadFile1" name="uploads1[]" accept="application/pdf" style="display: none;">
+                                <p class="help-block">{{lang.only_pdf}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="file" class="col-sm-3 control-label">{{lang.school_report_ver_Eng}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-6">
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar progress-bar-upload 2" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="button" class="btn" value="Browse" ng-click="chooseFile(2)">
+                                <button type="button" class="btn btn-primary preview" data-toggle="modal" data-target="#previewFile" ng-click="changeFile(2)" ng-class="{ 'form-hidden': profile.HocBa.FileEngUrl == undefined || profile.HocBa.FileEngUrl == ''}">Preview</button>
+                                <input type="file" id="uploadFile2" name="uploads2[]" accept="application/pdf" style="display: none;">
+                                <p class="help-block">{{lang.only_pdf}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /. box -->
+                <!-- box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.school_infor}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="datemask" class="col-sm-2 control-label">{{lang.school_name}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HocBa.ThongTinTruong.TenTruong" type="text" class="form-control" id="schoolName" placeholder="{{lang.school_name}}" required>
+                            </div>
+
+                            <div class="col-sm-1"></div>
+
+                            <label for="" class="col-sm-2 control-label">{{lang.graduation_year}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.ThongTinTruong.NamTotNghiep" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in graduationYear">{{item}}</option>
+								</select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">{{lang.address}}</label>
+
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HocBa.ThongTinTruong.DiaChi.SoNha" type="text" class="form-control" id="schoolAddress" placeholder="{{lang.number_address}}">
+                            </div>
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HocBa.ThongTinTruong.DiaChi.ThanhPho" type="text" class="form-control" id="schoolProAddress" placeholder="{{lang.province}}/{{lang.city}}">
+                            </div>
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.ThongTinTruong.DiaChi.QuocGia" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in nations">{{item}}</option>
+								</select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /. box	 -->
+                <!-- box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.learning_result}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">{{lang.class_10}} <span class="text-red">*</span></label>
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.KetQua.Lop10.HocLuc" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in hoclucs">{{item}}</option>
+								</select>
+                                <p class="help-block">{{lang.learning_capacity}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.KetQua.Lop10.HanhKiem" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in hanhkiems">{{item}}</option>
+								</select>
+                                <p class="help-block">{{lang.conduct}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HocBa.KetQua.Lop10.DiemToan" type="text" class="form-control numeric" id="mathPoint0" placeholder="{{lang.math_score}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">{{lang.class_11}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.KetQua.Lop11.HocLuc" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in hoclucs">{{item}}</option>
+								</select>
+                                <p class="help-block">{{lang.learning_capacity}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.KetQua.Lop11.HanhKiem" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in hanhkiems">{{item}}</option>
+								</select>
+                                <p class="help-block">{{lang.conduct}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HocBa.KetQua.Lop11.DiemToan" type="text" class="form-control numeric" id="mathPoint1" placeholder="{{lang.math_score}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">{{lang.class_12}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.KetQua.Lop12.HocLuc" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in hoclucs">{{item}}</option>
+								</select>
+                                <p class="help-block">{{lang.learning_capacity}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <select ng-model="profile.HocBa.KetQua.Lop12.HanhKiem" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in hanhkiems">{{item}}</option>
+								</select>
+                                <p class="help-block">{{lang.conduct}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HocBa.KetQua.Lop12.DiemToan" type="text" class="form-control numeric" id="mathPoint2" placeholder="{{lang.math_score}}" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnNext">{{lang.next}}</button>
+                    </div>
+                </div>
+                <!-- /. box -->
+            </form>
+        </section>
+    </div>
+
+    <!-- Modal preview files -->
+    <div class="modal fade" id="previewFile" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Preview</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="profile1" ng-show="file == 1" ng-class="{ 'form-hidden': file != 1 }"></div>
+                    <div id="profile2" ng-show="file == 2" ng-class="{ 'form-hidden': file != 2 }"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(function() {
+        $(".numeric").numeric({
+            decimal: ".",
+            negative: false,
+            precision: 3,
+            scale: 1
+        });
+        setTimeout(function() {
+            $(".select2").select2();
+        }, 1000);
+    });
+</script>

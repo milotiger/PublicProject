@@ -1,0 +1,55 @@
+<ul class="sidebar-menu">
+    <li class="header">I20 - College</li>
+    <li class="treeview">
+        <a ng-click="changeActive(0)" class="pointer">
+            <i class="fa fa-paperclip"></i>
+            <span>{{lang.i20_input}}</span>
+            <i class="fa fa-angle-down pull-right" ng-class="{ 'fa-angle-left': !isOpen, 'fa-angle-down': isOpen }"></i>
+        </a>
+        <ul class="treeview-menu" ng-show="isOpen" style="display : block;  transition: 5s linear all">
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.thong-tin')}"><a class="pointer" id="state0" ng-click="checkStep(0)"><i class="fa fa-circle-o"></i>{{lang.personal_infor}} </a></li>
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.hoc-ba') }"><a class="pointer" id="state1" ng-click="checkStep(1)"><i class="fa fa-circle-o"></i>{{lang.school_report}} </a></li>
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.bang-tot-nghiep') }"><a class="pointer" id="state2" ng-click="checkStep(2)"><i class="fa fa-circle-o"></i>{{lang.certificate_graduation}} </a></li>
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.bang-tieng-anh')}"><a class="pointer" id="state3" ng-click="checkStep(3)"><i class="fa fa-circle-o"></i>{{lang.english_degree}} </a></li>
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.ho-chieu') }"><a class="pointer" id="state4" ng-click="checkStep(4)"><i class="fa fa-circle-o"></i>{{lang.passport}} </a></li>
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.hinh-ho-chieu') }"><a class="pointer" id="state5" ng-click="checkStep(5)"><i class="fa fa-circle-o"></i>{{lang.passport_img}} </a></li>
+            <li ng-class="{ 'active' : $state.includes('app.i20-college.chu-ky') }"><a class="pointer" id="state6" ng-click="checkStep(6)"><i class="fa fa-circle-o"></i>{{lang.signature}} </a></li>
+        </ul>
+    </li>
+    <li ng-class="{ 'active' : $state.includes('app.i20-college.chon-truong') }" class="treeview">
+        <a class="pointer" ng-click="checkStep(7)" id="state7">
+            <i class="fa fa-institution"></i>
+            <span>{{lang.school_select}}</span>
+        </a>
+    </li>
+    <li ng-class="{ 'active' : $state.includes('app.i20-college.tai-chinh-suc-khoe') }" class="treeview">
+        <a class="pointer" ng-click="checkStep(8)" id="state8">
+            <i class="fa fa-heart"></i>
+            <span>{{lang.finance_health}}</span>
+        </a>
+    </li>
+    <li ng-class="{ 'active' : $state.includes('app.i20-college.dong-le-phi') }" class="treeview">
+        <a class="pointer" ng-click="checkStep(9)" id="state9">
+            <i class="fa fa-money"></i>
+            <span>{{lang.fee}}</span>
+        </a>
+    </li>
+    <li ng-class="{ 'active' : $state.includes('app.i20-college.xu-ly') }" class="treeview">
+        <a class="pointer" ng-click="checkStep(10)" id="state10">
+            <i class="fa fa-briefcase"></i>
+            <span>{{lang.I20_handling}}</span>
+        </a>
+    </li>
+    <!--<li ng-class="{ 'active' : $state.includes('app.i20-college.tong-hop') }" class="treeview">
+		<a class="pointer" href="dashboard/i20-college/tong-hop">
+			<i class="fa fa-home"></i>
+			<span>Tổng hợp</span>
+		</a>
+	</li>-->
+    <li class="treeview">
+        <a class="pointer" ng-click="checkStep(-1)">
+            <i class="fa fa-mail-reply"></i>
+            <span>{{lang.comeback_home}}</span>
+        </a>
+    </li>
+</ul>

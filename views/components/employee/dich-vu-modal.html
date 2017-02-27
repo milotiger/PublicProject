@@ -1,0 +1,25 @@
+<section class="content-header" style="padding-left : 0">
+    <h5 style="margin-top: 0">
+        {{lang.files_list}}
+    </h5>
+</section>
+<table id="new-table" class="table table-bordered table-striped" data-page-length="10">
+    <div cg-busy="promise"></div>
+    <thead>
+        <tr>
+            <th>{{lang.update_time}}</th>
+            <th>{{lang.name}}</th>
+            <th>{{lang.school}}</th>
+            <th class="text-center">{{lang.action}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="service in listServices" ng-show="service.AdminStep === action.index - 1">
+            <!--<tr ng-repeat="service in listServices" ng-show="true">-->
+            <td>{{service.TimeStamp}}</td>
+            <td>{{service.userID.HoTen}}</td>
+            <td>{{service.profileID.Truong.TenTruong || "Chưa cập nhật"}}</td>
+            <td class="text-center"><button type="button" class="btn btn-xs btn-primary" ng-click="goToService(service.profileID._id, service._id, service.userID._id, service.userID.HoTen)">{{action.text}}</button></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,113 @@
+<section class="content-header">
+    <h3 style="margin-top: 0">
+        {{lang.fee}}
+    </h3>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12 connectedSortable">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">{{lang.fee_list}}</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="payment-table" class="table table-bordered table-striped" data-page-length="10">
+                        <thead>
+                            <tr>
+                                <th class="text-center">{{lang.fee_name}}</th>
+                                <th class="text-center">{{lang.fee}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center" ng-repeat="item in profile.Fees">
+                                <td>{{item.Name_vi}}</td>
+                                <td>${{item.Fee}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- Payment type -->
+            <div class="header-payment">
+                <form>
+                    <h5 class="radio-inline" style="margin-top : 0px;">{{lang.payment_method}}</h5>
+                    <label for="paypal" class="radio-inline">
+						<input type="radio" id="paypal" checked="checked" name="payment" class="flat-red"/>
+						Paypal
+					</label>
+                    <label for="later" class="radio-inline">
+						<input type="radio" id="later" name="payment" class="flat-red"/>
+						{{lang.pay_later}}
+					</label>
+                </form>
+            </div>
+            <!-- /. Payment type -->
+            <div class="box box-primary" ng-class="{ 'form-hidden': payType == false }">
+                <div class="overlay" ng-style="!isWait && {'display':'none'}">
+                    <i class="fa fa-refresh fa-spin"></i>
+                </div>
+                <form class="form-horizontal" novalidate ng-submit="payment(true)">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">{{lang.name}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="lastName" ng-model="paypal.LastName" placeholder="{{lang.last_name}}" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="firstName" ng-model="paypal.FirstName" placeholder="{{lang.first_name}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Email <span class="text-red">*</span></label>
+
+                            <div class="col-sm-6">
+                                <input type="email" class="form-control" ng-model="paypal.Email" placeholder="ex : myname@example.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">{{lang.address}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="basicAddress" ng-model="paypal.BasicAddr" placeholder="{{lang.number_address}}">
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="provinceAddress" ng-model="paypal.Province" placeholder="{{lang.province}}/{{lang.city}}">
+                            </div>
+                            <div class="col-sm-3">
+                                <select ng-model="paypal.Nation" class="form-control select2" style="width: 100%;">
+									<option ng-repeat="item in nations">{{item}}</option>
+								</select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="zipCode" class="col-sm-2 control-label">Postal/Zip Code <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="zipCode" ng-model="paypal.ZipCode" placeholder="Postal/Zip Code">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnNext">{{lang.next}}</button>
+                    </div>
+                </form>
+            </div>
+            <button type="button" ng-if="payType == false" class="btn btn-primary pull-right" ng-click="payment(false)">{{lang.next}}</button>
+        </section>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function() {
+        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue'
+        });
+        $(".select2").select2();
+    });
+</script>

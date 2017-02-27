@@ -1,0 +1,260 @@
+*{
+	box-sizing: border-box;
+	margin: 0 auto;
+	font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    overflow-x:hidden;
+}
+
+.btn-wrapper.back-to-top .btn {
+	border: 2px solid rgba(14, 26, 42, 1);
+	border-radius: 4px;
+	cursor: pointer;
+	position: fixed;
+	right: 2%;
+	bottom: 3%;
+    color: rgba(14, 26, 42, 0.8);
+    font-size: 25px;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 45px;
+}
+
+.btn-wrapper .btn-transparent:hover {
+    color: #fff;
+}
+
+.btn-wrapper .btn:hover {
+    color: #fff;
+    background-color: rgba(14, 26, 42, 1);
+}
+
+.ld-img-container img{
+	width: 100%;
+	height: 400px;
+	position: relative;
+	object-fit: cover;
+	z-index: -1;
+}
+
+.ld-img-container{
+	width: 100%;
+	background-color: rgba(14, 26, 42, 0.8);
+	position: relative;
+	
+}
+
+.container{
+	margin-top:10vh; 
+	width: 90%; 
+	z-index: 100;
+}
+.ld-content{
+	width : 33.33%;
+	height: 20vh;
+	position: absolute;
+	left: 33.33%;
+	top: 20vh;
+}
+
+.ld-content h1{
+	color : white;
+	font-size: 50px;
+}
+
+#ld-btn-signup{
+	left: 70%;
+	top: 8%;
+	position: absolute;
+	background: transparent;
+	color: white;
+	font-size: 18px;
+	border : 2px solid white;
+}
+
+#ld-btn-signup:hover{
+	background-color : rgba(14, 26, 42, 1);
+	transition: all 0.5s;
+}
+
+#ld-btn-signin{
+	left: 78%;
+	top: 8%;
+	font-size: 20px;
+	position: absolute;
+}
+
+.ld-table-image {
+	margin-top: 20px;
+	background-color: rgba(14, 26, 42, 0);
+	position: relative;
+}
+
+.ld-table-image img {
+	position: relative;
+	z-index: -1;
+}
+
+.ld-table-image:hover {
+	background-color: rgba(14, 26, 42, 0.8);
+	transition-all : 0.5s;
+}
+
+.ld-item-content {
+	position: absolute;
+	top : 0;
+}
+
+h5{
+	white-space: 1.5;
+	line-height: 200%;
+}
+
+#ld-item-2{
+	margin-top: 30%;
+}
+
+#ld-table-2{
+	margin-top: 20%;
+}
+
+.ld-description{
+	margin-top: 10%;
+	width: 100%;
+	text-align: center;
+}
+
+.ld-description-content{
+	color: rgba(14, 26, 42, 1);
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.ld-feature-row{
+	margin-top : 2%;
+}
+
+.ld-feature-row:first-child{
+	margin-top : 5%;
+}
+
+.ld-feature-item{
+	position: relative;
+	border-top: 2px solid #e9eff2;
+  	border-bottom: 2px solid #e9eff2;
+  	border-left: 2px solid #0E1A2A;
+  	border-right: 2px solid #0E1A2A;
+	padding: 2vh;
+	margin-left: 1%;
+	width: 40%;
+	height: 30vh;
+  	z-index: 0;
+}
+
+.ld-feature-item:hover:before {
+  	transform: scale(1);
+  	-webkit-transform: scale(1);
+  	-moz-transform: scale(1);
+  	-ms-transform: scale(1);
+  	-o-transform: scale(1);
+  	transition-delay: 0s;
+}
+
+.ld-feature-item:hover:after {
+  	transform: scale(1, 0);
+  	-webkit-transform: scale(1, 0);
+  	-moz-transform: scale(1, 0);
+  	-ms-transform: scale(1, 0);
+  	-o-transform: scale(1, 0);
+  	transition-delay: 0.4s;
+}
+
+.ld-feature-item:before,
+.ld-feature-item:after {
+  	position: absolute;
+  	content: '';
+  	top: -2px;
+  	left: -2px;
+  	right: -2px;
+  	bottom: -2px;
+  	margin: auto;
+  	z-index: -1;
+  	transition: transform 0.4s ease-in;
+  	-webkit-transition: transform 0.4s ease-in;
+  	-moz-transition: transform 0.4s ease-in;
+  	-o-transition: transform 0.4s ease-in;
+}
+
+.ld-feature-item:before {
+  	border-top: 2px solid #0E1A2A;
+  	border-bottom: 2px solid #0E1A2A;
+  	transform: scale(0, 1);
+  	-webkit-transform: scale(0, 1);
+  	-moz-transform: scale(0, 1);
+  	-ms-transform: scale(0, 1);
+  	-o-transform: scale(0, 1);
+  	transition-delay: 0.4s;
+}
+
+.ld-feature-item:after {
+	border-left: 2px solid #e9eff2;
+  	border-right: 2px solid #e9eff2;
+  	transform: scale(1);
+  	-webkit-transform: scale(1);
+  	-moz-transform: scale(1);
+  	-ms-transform: scale(1);
+  	-o-transform: scale(1);
+  	transition-delay: 0s;
+  	z-index: 1;
+}
+
+.ld-feature-item-right{
+	margin-left: 2%;
+}
+
+.ld-end{
+	margin-top: 10%;
+	width: 100%;
+	height: 40vh;
+	padding: 15vh;
+	text-align: center;
+	background-color: rgba(14, 26, 42, 0.9);
+}
+
+.ld-end h4{
+	color: white;
+	font-size: 30px;
+}
+
+.ld-footer{
+	text-align: center;
+	margin-top: 2%;
+}
+
+.ld-footer p{
+	font-size: 13px;
+	font-weight: 400;
+}
+
+.ld-modal-dialog{
+	width: 465px;
+	height: 400px;
+	font-family: 1em/1.2em Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;
+}
+
+.ld-modal-header{
+	text-align: center;
+}
+
+.ld-feature-item-header {
+	margin-top : 0;
+}
+
+.ld-feature-item-content {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+}

@@ -1,0 +1,214 @@
+<section class="content-header">
+    <h3 style="margin-top: 0">
+        {{lang.finance_health}}
+    </h3>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12 connectedSortable">
+            <form class="form-horizontal" ng-submit="saveInfo(7)">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">{{lang.form}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="" class="col-sm-4 control-label">{{lang.school_form}} {{selectedSchool}}</label>
+
+                            <div class="col-sm-2">
+                                <button ng-click="backToSchool()" type="button" class="btn btn-sm btn-primary" id="reSelected">{{lang.reselect_school}}</button>
+                            </div>
+                        </div>
+                        <table id="new-table" class="table table-bordered table-striped" data-page-length="10">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">{{lang.form_name}}</th>
+                                    <th class="text-center">{{lang.manipulation}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td>{{lang.health_form}}</td>
+                                    <td>
+                                        <a href="{{form.MauKhamSucKhoe}}" download target="_blank" class="btn btn-xs btn-primary" title="Download"><i class="fa fa-arrow-down"></i></a>
+                                        <!--<a ng-click="printPdf('health')" class="btn btn-xs btn-warning" title="Print"><i class="fa fa-print" aria-hidden="true"></i></a>-->
+                                        <!--<iframe id="health" src="https://s3-ap-southeast-1.amazonaws.com/masdoc15011995/forms/KhamSucKhoe.pdf" style="display:none;"></iframe>-->
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td>{{lang.finance_form}}</td>
+                                    <td>
+                                        <a href="{{form.ChungMinhTaiChinh}}" download target="_blank" class="btn btn-xs btn-primary" title="Download"><i class="fa fa-arrow-down"></i></a>
+                                        <!--<a ng-click="printPdf('money')" class="btn btn-xs btn-warning" title="Print"><i class="fa fa-print" aria-hidden="true"></i></a>-->
+                                        <!--<iframe id="money" src="https://s3-ap-southeast-1.amazonaws.com/masdoc15011995/forms/Income+Statement+EN.doc" style="display:none;"></iframe>-->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">{{lang.guide}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="" class="col-sm-4 control-label">{{lang.medical_guide}}</label>
+
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-sm btn-primary" id="helpBtn1" data-toggle="modal" data-target="#helpModal1">{{lang.details}}</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-4 control-label">{{lang.finance_guide}}</label>
+
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-sm btn-primary" id="helpBtn2" data-toggle="modal" data-target="#helpModal2">{{lang.details}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box box-primary">
+                    <div class="overlay" ng-style="!isWait && {'display':'none'}">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.upload_finance_health_form}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="file1" class="col-sm-2 control-label upload-label">Upload <span class="text-red">*</span></label>
+
+                            <div class="col-sm-6">
+                                <p class="help-block">{{lang.finance_form_school}}</p>
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar progress-bar-upload 7" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="button" class="btn btn-flat upload-input" value="Browse" ng-click="chooseFile(7)">
+                                <button type="button" class="btn btn-primary preview upload-input" data-toggle="modal" data-target="#previewFile" ng-click="changeFile(7)" ng-class="{ 'form-hidden': profile.BieuMau.CMTCTruong == undefined || profile.BieuMau.CMTCTruong == ''}">Preview</button>
+                                <input type="file" id="uploadFile7" name="uploads7[]" accept="application/pdf" style="display: none;">
+                                <p class="help-block">{{lang.only_pdf}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="file2" class="col-sm-2 control-label upload-label">Upload <span class="text-red">*</span></label>
+
+                            <div class="col-sm-6">
+                                <p class="help-block">{{lang.bank_balance_confirm}}</p>
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar progress-bar-upload 8" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="button" class="btn btn-flat upload-input" value="Browse" ng-click="chooseFile(8)">
+                                <button type="button" class="btn btn-primary preview upload-input" data-toggle="modal" data-target="#previewFile" ng-click="changeFile(8)" ng-class="{ 'form-hidden': profile.BieuMau.CMTCNganHang == undefined || profile.BieuMau.CMTCNganHang == ''}">Preview</button>
+                                <input type="file" id="uploadFile8" name="uploads8[]" accept="application/pdf" style="display: none;">
+                                <p class="help-block">{{lang.only_pdf}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="file3" class="col-sm-2 control-label upload-label">Upload <span class="text-red">*</span></label>
+
+                            <div class="col-sm-6">
+                                <p class="help-block">{{lang.health_form_school}}</p>
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar progress-bar-upload 9" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="button" class="btn btn-flat upload-input" value="Browse" ng-click="chooseFile(9)">
+                                <button type="button" class="btn btn-primary preview upload-input" data-toggle="modal" data-target="#previewFile" ng-click="changeFile(9)" ng-class="{ 'form-hidden': profile.BieuMau.KSKTruong == undefined || profile.BieuMau.KSKTruong == ''}">Preview</button>
+                                <input type="file" id="uploadFile9" name="uploads9[]" accept="application/pdf" style="display: none;">
+                                <p class="help-block">{{lang.only_pdf}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="file4" class="col-sm-2 control-label upload-label">Upload <span class="text-red">*</span></label>
+
+                            <div class="col-sm-6">
+                                <p class="help-block">{{lang.health_form_hospital}}</p>
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar progress-bar-upload 10" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="button" class="btn btn-flat upload-input" value="Browse" ng-click="chooseFile(10)">
+                                <button type="button" class="btn btn-primary preview upload-input" data-toggle="modal" data-target="#previewFile" ng-click="changeFile(10)" ng-class="{ 'form-hidden': profile.BieuMau.KSKBenhVien == undefined || profile.BieuMau.KSKBenhVien == ''}">Preview</button>
+                                <input type="file" id="uploadFile10" name="uploads10[]" accept="application/pdf" style="display: none;">
+                                <p class="help-block">{{lang.only_pdf}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnNext">{{lang.next}}</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="modal fade" id="helpModal1" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{lang.medical_guide}}</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div class="modal fade" id="helpModal2" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{lang.finance_guide}}</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- Modal preview files -->
+    <div class="modal fade" id="previewFile" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Preview</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="profile7" ng-show="file == 7" ng-class="{ 'form-hidden': file != 7 }"></div>
+                    <div id="profile8" ng-show="file == 8" ng-class="{ 'form-hidden': file != 8 }"></div>
+                    <div id="profile9" ng-show="file == 9" ng-class="{ 'form-hidden': file != 9 }"></div>
+                    <div id="profile10" ng-show="file == 10" ng-class="{ 'form-hidden': file != 10 }"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

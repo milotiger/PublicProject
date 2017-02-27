@@ -1,0 +1,164 @@
+<section class="content-header">
+    <h1>
+        {{lang.school}}
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12 connectedSortable">
+            <!-- New -->
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">{{lang.school_list}}</h3>
+                    <button type="button" class="btn btn-sm btn-primary pull-right" data-toggle="modal" data-target="#schoolModal" ng-click="selectedSchool(-1)" title="Add new">{{lang.new}}</button>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="new-table" class="table table-bordered table-striped" data-page-length="10">
+                        <thead>
+                            <tr>
+                                <th>{{lang.school_id}}</th>
+                                <th>{{lang.school_name}}</th>
+                                <th>{{lang.school_kind}}</th>
+                                <th>{{lang.stage}}</th>
+                                <th class="text-center">{{lang.action}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="school in schools">
+                                <td>{{school.MaTruong}}</td>
+                                <td>{{school.TenTruong}}</td>
+                                <td>{{school.LoaiTruong}}</td>
+                                <td>{{school.TieuBang}}</td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#schoolModal" ng-click="selectedSchool($index)" title="Edit"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-xs btn-danger" ng-click="deleteSchool($index)" title="Delete"><i class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /New -->
+        </section>
+    </div>
+
+    <div class="modal fade" id="schoolModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="form-horizontal" ng-submit="saveSchools()">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">{{lang.school_infor}} {{schools[index].TenTruong}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">{{lang.school_id}}<span class="text-red">*</span></label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" ng-model="selected.MaTruong" placeholder="{{lang.school_id}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">{{lang.school_name}}<span class="text-red">*</span></label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" ng-model="selected.TenTruong" placeholder="{{lang.school_name}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">{{lang.school_kind}}<span class="text-red">*</span></label>
+
+                            <div class="col-sm-9">
+                                <select ng-model="selected.LoaiTruong" class="form-control select2" style="width: 100%;">
+                                <option ng-repeat="item in schoolType">{{item}}</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">{{lang.stage}}<span class="text-red">*</span></label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" ng-model="selected.TieuBang" placeholder="{{lang.stage}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="file" class="col-sm-3 control-label">{{lang.form}} </label>
+
+                            <div class="col-sm-5">
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar form progress-bar-upload" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="button" class="btn btn-flat" value="Browse" ng-click="chooseFile('form')">
+                                <button type="button" class="btn btn-primary preview" ng-click="previewFile('form')" ng-class="{ 'form-hidden': selected.BieuMau == undefined || selected.BieuMau == ''}"><i class="fa fa-eye"></i></button>
+                                <input type="file" id="uploadFileform" name="uploadsform[]" accept="application/pdf" style="display: none;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="finance" class="col-sm-3 control-label">{{lang.finance}}</label>
+
+                            <div class="col-sm-5">
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar finance progress-bar-upload" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="button" class="btn btn-flat" value="Browse" ng-click="chooseFile('finance')">
+                                <button type="button" class="btn btn-primary preview" ng-click="previewFile('finance')" ng-class="{ 'form-hidden': selected.ChungMinhTaiChinh == undefined || selected.ChungMinhTaiChinh == ''}"><i class="fa fa-eye"></i></button>
+                                <input type="file" id="uploadFilefinance" name="uploadsfinance[]" accept="application/pdf" style="display: none;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="health" class="col-sm-3 control-label">{{lang.health}}</label>
+
+                            <div class="col-sm-5">
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar health progress-bar-upload" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="button" class="btn btn-flat" value="Browse" ng-click="chooseFile('health')">
+                                <button type="button" class="btn btn-primary preview" ng-click="previewFile('health')" ng-class="{ 'form-hidden': selected.MauKhamSucKhoe == undefined || selected.MauKhamSucKhoe == ''}"><i class="fa fa-eye"></i></button>
+                                <input type="file" id="uploadFilehealth" name="uploadshealth[]" accept="application/pdf" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{lang.cancel}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="previewFile" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Preview</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="profile"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function() {
+        setTimeout(function() {
+            $(".select2").select2();
+        }, 500);
+    });
+</script>

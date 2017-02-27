@@ -1,0 +1,97 @@
+<section class="content-header">
+    <h3 style="margin-top: 0">
+        {{lang.i20_input}}
+        <small>{{lang.passport}}</small>
+    </h3>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12 connectedSortable">
+            <form class="form-horizontal" ng-submit="saveInfo(3)">
+                <div class="box box-primary">
+                    <div class="overlay" ng-style="!isWait && {'display':'none'}">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{lang.upload_passport}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="file" class="col-sm-2 control-label">Upload <span class="text-red">*</span></label>
+
+                            <div class="col-sm-6">
+                                <div class="progress progress-bar-lg">
+                                    <div class="progress-bar progress-bar-upload 6" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="button" class="btn btn-flat" value="Browse" ng-click="chooseFile(6)">
+                                <button type="button" class="btn btn-primary preview" data-toggle="modal" data-target="#previewFile" ng-click="changeFile(6)" ng-class="{ 'form-hidden': profile.HoChieu.FileUrl == undefined || profile.HoChieu.FileUrl == ''}">Preview</button>
+                                <input type="file" id="uploadFile6" name="uploads6[]" accept="application/pdf" multiple="multiple" style="display: none;">
+                                <p class="help-block">{{lang.only_pdf}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box box-primary">
+                    <div class="box-header with-header">
+                        <h3 class="box-title">{{lang.passport_infor}}</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="number" class="col-sm-2 control-label">{{lang.passport_id}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HoChieu.SoHoChieu" type="text" class="form-control" id="number" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="start" class="col-sm-2 control-label">{{lang.issued_day}}<span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HoChieu.NgayCap" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="start" required>
+                            </div>
+
+                            <label for="end" class="col-sm-2 control-label">{{lang.expired_day}} <span class="text-red">*</span></label>
+
+                            <div class="col-sm-3">
+                                <input ng-model="profile.HoChieu.NgayHetHan" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="end" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnNext">{{lang.next}}</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <!-- Modal preview files -->
+    <div class="modal fade" id="previewFile" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Preview</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="profile6" ng-show="file == 6"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(function() {
+        $("#start").inputmask("dd/mm/yyyy", {
+            "placeholder": "dd/mm/yyyy"
+        });
+        $("#end").inputmask("dd/mm/yyyy", {
+            "placeholder": "dd/mm/yyyy"
+        });
+    });
+</script>

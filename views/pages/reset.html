@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MASDOC | {{lang.forgot_pass}}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../bower_components/angular-busy/dist/angular-busy.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style-skin.css">
+    <link rel="stylesheet" href="../bower_components/sweetalert/dist/sweetalert.css">
+</head>
+
+<body class="hold-transition login-page" ng-app="app" ng-controller="resetCtr">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href=""><b>MASDOC</b></a>
+        </div>
+        <div class="login-box-body">
+            <p class="login-box-msg">{{lang.change_pass}}</p>
+
+            <form name="userForm" novalidate>
+                <div class="form-group has-feedback" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+                    <input type="password" class="form-control" name="password" ng-model="newPassword" placeholder="{{lang.new_pass}}" required ng-minlength="6" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    <p ng-show="userForm.password.$error.minlength" class="help-block">{{lang.pass_min_six}}</p>
+                    <p ng-show="userForm.password.$error.pattern" class="help-block">{{lang.pass_error}}</p>
+                    <p ng-show="userForm.password.$invalid && !userForm.password.$pristine && !userForm.password.$error.minlength && !userForm.password.$error.pattern" class="help-block">{{lang.pass_not_null}}</p>
+                </div>
+                <div class="form-group has-feedback" ng-class="{ 'has-error' : userForm.repassword.$invalid && !userForm.repassword.$pristine }">
+                    <input type="password" class="form-control" name="repassword" ng-model="repassword" placeholder="{{lang.retype_password}}" valid-password="newPassword" required>
+                    <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                    <p ng-show="userForm.repassword.$error.noMatch" class="help-block">{{lang.retype_error}}</p>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <button type="button" class="btn btn-primary btn-block btn-flat" ng-disabled="!userForm.$valid" ng-click="submitForm(userForm.$valid)">{{lang.change_pass}}</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+    <!-- /.login-box -->
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../bower_components/angular-busy/dist/angular-busy.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/controller/app.reset.js"></script>
+    <script src="../assets/js/services/app.globalService.js"></script>
+</body>
+
+</html>

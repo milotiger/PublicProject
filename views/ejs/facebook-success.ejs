@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MASDOC | Xác Nhận</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style-skin.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body class="hold-transition register-page">
+    <div class="register-box">
+        <div class="register-logo"><a href=""><b>MASDOC</b></a></div>
+        <div class="register-box-body text-center"><h4 style="color: green">{{lang.account_verified}}</h4><a id="timer"></a></div>
+    </div>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        var createCookie = function(name, value, days) {
+            var expires;
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toGMTString();
+            }
+            else {
+                expires = "";
+            }
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+        createCookie('at', '<%= token%>', 7);
+
+        var count = 6;
+        var counter = setInterval(timer, 1000); //1000 will  run it every 1 second
+
+        function timer()
+        {
+            count = count - 1;
+            if (count <= 0)
+            {
+                clearInterval(counter);
+                window.location.pathname = "home.html";
+                return;
+            }
+
+            $('#timer').html({{lang.go_home}} + count + {{lang.second}} + "!!!");
+        }
+    </script>
+</body>
+</html>

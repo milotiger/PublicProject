@@ -1,0 +1,96 @@
+<section class="content-header" style="padding-left : 0">
+    <h3 style="margin-top: 0; display: inline;">
+        {{lang.file_category}}
+    </h3>
+    <button class="btn btn-sm btn-primary pull-right" ng-click="nextAdminStep()">{{lang.done}}</button>
+</section>
+<table id="new-table" class="table table-bordered table-striped" data-page-length="10">
+    <thead>
+        <tr>
+            <th class="text-center">{{lang.doc_name}}</th>
+            <th class="text-center">{{lang.manipulation}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="text-center">
+            <td>{{lang.school_report}}</td>
+            <td class="text-center">
+                <a href="{{files.HocBa.FileUrl}}" target="_blank" class="btn btn-xs btn-default" title="Preview"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                <a href="{{files.HocBa.FileUrl}}" download target="_blank" class="btn btn-xs btn-primary" title="Download"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                <a ng-click="printPdf(files.HocBa.FileUrl)" class="btn btn-xs btn-warning" title="Print"><i class="fa fa-print" aria-hidden="true"></i></a>
+                <iframe id="{{files.HocBa.FileUrl}}" name="{{files.HocBa.FileUrl}}" src="{{files.HocBa.FileUrl}}" style="display:none;"></iframe>
+            </td>
+        </tr>
+        <tr class="text-center">
+            <td>{{lang.certificate_graduation}}</td>
+            <td class="text-center">
+                <a href="{{files.BangTotNghiep.FileUrl}}" target="_blank" class="btn btn-xs btn-default" title="Preview"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                <a href="{{files.BangTotNghiep.FileUrl}}" download target="_blank" class="btn btn-xs btn-primary" title="Download"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                <a ng-click="printPdf(files.BangTotNghiep.FileUrl)" class="btn btn-xs btn-warning" title="Print"><i class="fa fa-print" aria-hidden="true"></i></a>
+                <iframe id="{{files.BangTotNghiep.FileUrl}}" name="{{files.BangTotNghiep.FileUrl}}" src="{{files.BangTotNghiep.FileUrl}}"
+                    style="display:none;"></iframe>
+            </td>
+        </tr>
+        <tr class="text-center">
+            <td>{{lang.english_degree}}</td>
+            <td class="text-center">
+                <a href="{{files.BangTiengAnh.FileUrl}}" target="_blank" class="btn btn-xs btn-default" title="Preview"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                <a href="{{files.BangTiengAnh.FileUrl}}" download target="_blank" class="btn btn-xs btn-primary" title="Download"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                <a ng-click="printPdf(files.BangTiengAnh.FileUrl)" class="btn btn-xs btn-warning" title="Print"><i class="fa fa-print" aria-hidden="true"></i></a>
+                <iframe id="{{files.BangTiengAnh.FileUrl}}" name="{{files.BangTiengAnh.FileUrl}}" src="{{files.BangTiengAnh.FileUrl}}" style="display:none;"></iframe>
+            </td>
+        </tr>
+        <tr class="text-center">
+            <td>{{lang.passport}}</td>
+            <td class="text-center">
+                <a href="{{files.HoChieu.FileUrl}}" target="_blank" class="btn btn-xs btn-default" title="Preview"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                <a href="{{files.HoChieu.FileUrl}}" download target="_blank" class="btn btn-xs btn-primary" title="Download"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                <a ng-click="printPdf(files.HoChieu.FileUrl)" class="btn btn-xs btn-warning" title="Print"><i class="fa fa-print" aria-hidden="true"></i></a>
+                <iframe id="{{files.HoChieu.FileUrl}}" name="{{files.HoChieu.FileUrl}}" src="{{files.HoChieu.FileUrl}}" style="display:none;"></iframe>
+            </td>
+        </tr>
+        <tr class="text-center">
+            <td>{{lang.passport_img}}</td>
+            <td class="text-center">
+                <a href="{{files.HinhHoChieu.FileUrl}}" target="_blank" class="btn btn-xs btn-default" title="Preview"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                <a href="{{files.HinhHoChieu.FileUrl}}" download target="_blank" class="btn btn-xs btn-primary" title="Download"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                <a ng-click="printPdf(files.HinhHoChieu.FileUrl)" class="btn btn-xs btn-warning" title="Print"><i class="fa fa-print" aria-hidden="true"></i></a>
+                <iframe id="{{files.HinhHoChieu.FileUrl}}" name="{{files.HinhHoChieu.FileUrl}}" src="{{files.HinhHoChieu.FileUrl}}" style="display:none;"></iframe>
+            </td>
+        </tr>
+        <tr class="text-center">
+            <td>{{lang.signature}}</td>
+            <td class="text-center">
+                <a href="{{files.ChuKy.FileUrl}}" target="_blank" class="btn btn-xs btn-default" title="Preview"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                <a href="{{files.ChuKy.FileUrl}}" download target="_blank" class="btn btn-xs btn-primary" title="Download"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                <a ng-click="printPdf(files.ChuKy.FileUrl)" class="btn btn-xs btn-warning" title="Print"><i class="fa fa-print" aria-hidden="true"></i></a>
+                <iframe id="{{files.ChuKy.FileUrl}}" name="{{files.ChuKy.FileUrl}}" src="{{files.ChuKy.FileUrl}}" style="display:none;"></iframe>
+            </td>
+        </tr>
+        <tr class="text-center">
+            <td>Application form</td>
+            <td class="text-center">
+                <button type="button" class="btn btn-xs btn-default" ng-click="previewForm()"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-xs btn-warning" ng-click=""><i class="fa fa-print" aria-hidden="true"></i></button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<div class="modal fade" id="previewForm" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Preview</h4>
+            </div>
+            <div class="modal-body">
+                <embed embed-src="{{formdata.url}}" type="application/pdf" style="width: 100%; height: 80vh" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
